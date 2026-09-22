@@ -116,6 +116,47 @@
         Prototipo academico con datos ficticios. Este cuestionario no emite diagnosticos medicos.
     </p>
 </section>
+
+<section
+class="questionnaire"
+id="preferences-screen"
+aria-labelledby="preferences-title"
+hidden
+>
+
+<p class="eyebrow">PASO 2 DE 4. PREFERENCIAS</p>
+
+<h2 id="preferences-title" tabindex="-1"></h2>
+
+<form id="preferences-form">
+    <label class="field-label" for="preference">
+        Selecciona una opcion
+    </label>
+    <select id="preference" name="preference" required>
+        <option value="">Selecciona una opcion</option>
+    </select>
+    <div class="form-actions">
+        <button
+        class="button-secondary"
+        id="back-to-reason"
+        type="button"
+        >
+            Atras
+        </button>
+
+        <button class="button-primary" type="submit">
+            Guardar preferencia
+        </button>
+    </div>
+
+    <p id="preferences-message" role="status"></p>
+</form>
+</section>
+
+
+
+
+
 </main>
 
 <footer class="site-footer">

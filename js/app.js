@@ -7,8 +7,16 @@ const questionTitle = document.querySelector("#question-title");
 const reasonForm = document.querySelector("#reason-form");
 const reasonMessage = document.querySelector("#reason-message");
 
+const preferencesScreen = document.querySelector("#preferences-screen");
+const preferencesTitle = document.querySelector("#preferences-title");
+const preferencesForm = document.querySelector("#preferences-form");
+const preferenceSelect = document.querySelector("#preference");
+const preferencesMessage = document.querySelector("#preferences-message");
+const backButton = document.querySelector("#back-to-reason");
+
 const appointmentDraft = {
   reason: null,
+  preference: null,
 };
 
 const reasonLabels = {
@@ -17,12 +25,59 @@ const reasonLabels = {
   followup: "Consulta de seguimiento",
 };
 
+const scheduleOptions = [
+  { value: "morning", label: "Por la mañana" },
+  { value: "afternoon", label: "Por la tarde" },
+];
+
+const specialtyOptions = [
+  { value: "general_medicine", label: "Medicina general" },
+  { value: "dermatology", label: "Dermatología" },
+  { value: "cardiology", label: "Cardiología" },
+];
+
+function focusTitle(title) {
+  title.setAttribute("tabindex", "-1");
+  title.focus();
+}
+
 function startQuestionnaire() {
   welcomeScreen.hidden = true;
   questionnaireScreen.hidden = false;
 
-  questionTitle.setAttribute("tabindex", "-1");
-  questionTitle.focus();
+  focusTitle(questionTitle);
+}
+
+function getPreferenceOptions() {
+  return appointmentDraft.reason === "specialist"
+    ? specialtyOptions
+    : scheduleOptions;
+}
+
+function showPreferences() {
+  const titles = {
+    general: "¿En qué horario prefieres tu consulta?",
+    specialist: "¿Qué especialidad necesitas?",
+    followup: "¿En qué horario prefieres tu seguimiento?",
+  };
+
+  preferencesTitle.textContent = titles[appointmentDraft.reason];
+
+  preferenceSelect.replaceChildren(
+    new Option("Selecciona una opción", "")
+  );
+
+  getPreferenceOptions().forEach((option) => {
+    preferenceSelect.add(new Option(option.label, option.value));
+  });
+
+  preferenceSelect.value = appointmentDraft.preference ?? "";
+  preferencesMessage.textContent = "";
+
+  questionnaireScreen.hidden = true;
+  preferencesScreen.hidden = false;
+
+  focusTitle(preferencesTitle);
 }
 
 function saveReason(event) {
@@ -32,23 +87,58 @@ function saveReason(event) {
   const selectedReason = formData.get("reason");
 
   if (!Object.keys(reasonLabels).includes(selectedReason)) {
-    reasonMessage.textContent =
-      "Por favor, selecciona una opción válida.";
-
+    reasonMessage.textContent = "Selecciona una opción válida.";
     return;
   }
 
-  appointmentDraft.reason = selectedReason;
+  if (appointmentDraft.reason !== selectedReason) {
+    appointmentDraft.preference = null;
+  }
 
-  reasonMessage.textContent =
-    `Respuesta guardada: ${reasonLabels[selectedReason]}.`;
+  appointmentDraft.reason = selectedReason;
+  reasonMessage.textContent = "";
+
+  showPreferences();
+}
+
+function savePreference(event) {
+  event.preventDefault();
+
+  const selectedOption = getPreferenceOptions().find(
+    (option) => option.value === preferenceSelect.value
+  );
+
+  if (!selectedOption) {
+    preferencesMessage.textContent = "Selecciona una opción válida.";
+    return;
+  }
+
+  appointmentDraft.preference = selectedOption.value;
+
+  preferencesMessage.textContent =
+    `Preferencia guardada: ${selectedOption.label}.`;
+}
+
+function goBackToReason() {
+  preferencesScreen.hidden = true;
+  questionnaireScreen.hidden = false;
+
+  focusTitle(questionTitle);
 }
 
 function clearReasonMessage() {
-  appointmentDraft.reason = null;
   reasonMessage.textContent = "";
+}
+
+function clearPreferenceMessage() {
+  appointmentDraft.preference = null;
+  preferencesMessage.textContent = "";
 }
 
 startButton.addEventListener("click", startQuestionnaire);
 reasonForm.addEventListener("submit", saveReason);
 reasonForm.addEventListener("change", clearReasonMessage);
+
+preferencesForm.addEventListener("submit", savePreference);
+preferenceSelect.addEventListener("change", clearPreferenceMessage);
+backButton.addEventListener("click", goBackToReason);
