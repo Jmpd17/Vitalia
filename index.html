@@ -44,7 +44,11 @@
     <p class="status-message" id="status-message" role="status"></p>
 </section>
 
-<section class="questionnaire" id="questionnaire-screen" aria-labelledby="question-title" hidden>
+<section class="questionnaire"
+         id="questionnaire-screen"
+         aria-labelledby="question-title"
+         hidden
+         >
 
     <p class="eyebrow">PASO 1 DE 4. MOTIVO DE LA VISITA</p>
 
@@ -56,9 +60,9 @@
         <fieldset class="answer-options">
             <legend>Motivo de la visita</legend>
 
-            <label class="answer-options">
+            <label class="answer-option">
                 <input
-                type="text"
+                type="radio"
                 name="reason"
                 value="general"
                 required
