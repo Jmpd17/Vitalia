@@ -1,0 +1,124 @@
+:root{
+    --color-backgrorund: #f5f8f6;
+--color-surface: #ffffff;
+--color-primary: #08796c;
+--color-primary-hover: #065f55;
+--color-text: #173d39;
+--color-muted: #596f68;
+--color-border: #dce7e3;
+
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    color: var(--color-text);
+    background-color: var(--color-backgrorund);
+}
+
+
+.site-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    padding: 1.25rem clamp(1rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+}
+
+
+.brand{
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.demo-label{
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
+
+.main-content{
+    flex: 1;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: clamp(2rem, 7vw, 6rem) 1.5rem;
+}
+
+.welcome{
+    max-width: 42rem;
+}
+
+.eyebrow{
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+h1{
+    margin-block: 1rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.15;
+}
+
+.welcome-despcription{
+    margin-bottom: 2rem;
+    color: var(--color-muted);
+    font-size: 1.25rem;
+}
+
+.button-primary{
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+
+    color: var(--color-surface);
+    background-color: var(--color-primary);
+
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.button-primary:hover{
+    background-color: var(--color-primary-hover);
+}
+
+a:focus-visible,
+button:focus-visible{
+    outline: 2px solid #b65d13;
+    outline-offset: 4px;
+}
+
+.status-message{
+    min-height: 1.6em;
+    margin-top: 1.25rem;
+    color: var(--color-primary);
+}
+
+.site-footer{
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    text-align: center;
+    font-size: 0.875rem;
+}
