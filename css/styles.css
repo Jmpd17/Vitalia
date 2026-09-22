@@ -254,3 +254,50 @@ button:focus-visible{
     background-color: var(--color-backgrorund);
     cursor: pointer;
 }
+
+.booking-progress{
+    width: 100%;
+    max-width: 44rem;
+    margin-bottom: 1.5rem;
+}
+
+.progress-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+#booking-progress-bar{
+    display: block;
+    width: 100%;
+    height: 0.625rem;
+
+    overflow: hidden;
+    border: none;
+    border-radius: 1rem;
+
+    appearance: none;
+    background-color: var(--color-border);
+    accent-color: var(--color-primary);
+}
+
+#booking-progress-bar::-webkit-progress-bar{
+    background-color: var(--color-border);
+    border-radius: 1rem;
+}
+
+#booking-progress-bar::-moz-progress-bar{
+    background-color: var(--color-primary);
+    border-radius: 1rem;
+}
+
+.progress-description{
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
