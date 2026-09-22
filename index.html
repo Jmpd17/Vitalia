@@ -27,7 +27,7 @@
 
 
 <main class="main-content">
-<section class="welcome" aria-labelledby="welcome-title">
+<section class="welcome" id="welcome-screen" aria-labelledby="welcome-title">
     <p class="eyebrow"> TU SALUD, A TU RITMO</p>
 
 
@@ -42,6 +42,75 @@
     </button>
 
     <p class="status-message" id="status-message" role="status"></p>
+</section>
+
+<section class="questionnaire" id="questionnaire-screen" aria-labelledby="question-title" hidden>
+
+    <p class="eyebrow">PASO 1 DE 4. MOTIVO DE LA VISITA</p>
+
+    <h2 id="question-title">¿Que tipo de visita necesitas?</h2>
+
+    <p>Selecciona una opcion para organizar tu consulta.</p>
+
+    <form id="reason-form">
+        <fieldset class="answer-options">
+            <legend>Motivo de la visita</legend>
+
+            <label class="answer-options">
+                <input
+                type="text"
+                name="reason"
+                value="general"
+                required
+                >
+                <span>
+                    <strong>Consulta General</strong>
+                    <span class="option-description">
+                        Quiero organizar una valoracion general.
+                    </span>
+                </span>
+            </label>
+
+            <label class="answer-option">
+                <input
+                type="radio"
+                name="reason"
+                value="specialist"
+                >
+                <span>
+                    <strong>Consulta con Especialista</strong>
+                    <span class="option-description">
+                        Quiero organizar una consulta con un especialista.
+                    </span>
+                </span>
+            </label>
+
+            <label class="answer-option">
+                <input
+                type="radio"
+                name="reason"
+                value="followup"
+                >
+
+                <span>
+                    <strong>Consulta de Seguimiento</strong>
+                    <span class="option-description">
+                        Quiero organizar una nueva visita de seguimiento.
+                    </span>
+                </span>
+            </label>
+        </fieldset>
+
+        <button class="button-primary" type="submit">
+            Guardar repuestas
+        </button>
+
+        <p id="reason-message" role="status"></p>
+    </form>
+
+    <p class="questionnaire-note">
+        Prototipo academico con datos ficticios. Este cuestionario no emite diagnosticos medicos.
+    </p>
 </section>
 </main>
 
