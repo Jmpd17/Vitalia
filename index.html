@@ -25,6 +25,9 @@
 <span class="demo-label">Prototipo Academico</span>
 </header>
 
+
+
+<main class="main-content">
 <div class="booking-progress" id="booking-progress" hidden>
     <div class="progress-heading">
         <label for="booking-progress-bar">Progreso de tu cita</label>
@@ -40,7 +43,7 @@
     </p>
 </div>
 
-<main class="main-content">
+
 <section class="welcome" id="welcome-screen" aria-labelledby="welcome-title">
     <p class="eyebrow"> TU SALUD, A TU RITMO</p>
 
@@ -159,17 +162,58 @@ hidden
         </button>
 
         <button class="button-primary" type="submit">
-            Guardar preferencia
-        </button>
+            Ver médicos
+    </button>
     </div>
 
     <p id="preferences-message" role="status"></p>
 </form>
 </section>
 
+<section
+class="questionnaire"
+id="doctor-screen"
+aria-labelledby="doctor-title"
+hidden
+>
 
+<p class="eyebrow">PASO 3 DE 4. MEDICO Y HORARIO</p>
 
+<h2 id="doctor-title" tabindex="-1">
+    Elige tu medico
+</h2>
 
+<p id="doctor-description"></p>
+
+<form id="doctor-form">
+    <label class="field-label" for="doctor">
+        profesionales disponibles en esta demostracion
+    </label>
+
+    <select id="doctor" name="doctor" required>
+        <option value="">Selecciona un medico</option>
+    </select>
+
+    <div class="form-actions">
+        <button
+        class="button-secondary"
+        id="back-to-preferences"
+        type="button"
+        >
+        Atras
+        </button>
+
+        <button class="button-primary" type="submit">
+            Guardar medico
+        </button>
+    </div>
+    <p id="doctor-message" role="status"></p>
+</form>
+
+<p class="questionnaire-note">
+    Los profesionales son ficticios. Todavia no se ha reservado una cita.
+</p>
+</section>
 
 </main>
 
